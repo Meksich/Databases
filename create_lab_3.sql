@@ -16,6 +16,7 @@ CREATE TABLE stop (
   city VARCHAR(45) NOT NULL,
   average_number_of_passengers INT NULL,
   is_final_stop TINYINT NOT NULL,
+  INDEX street (street_name ASC),
   PRIMARY KEY (street_name)
 ) ENGINE = InnoDB;
 
@@ -26,6 +27,7 @@ CREATE TABLE ticket (
   width INT NULL,
   height INT NULL,
   produced_number INT NULL,
+  INDEX ticket_type (speciality ASC),
   PRIMARY KEY (idticket)
 ) ENGINE = InnoDB;
 
@@ -56,6 +58,7 @@ CREATE TABLE bus_rented (
   owner VARCHAR(45) NOT NULL,
   rental_fee VARCHAR(45) NOT NULL,
   owner_country VARCHAR(45) NULL,
+  INDEX owner (owner ASC),
   PRIMARY KEY (idbus_rented))
 ENGINE = InnoDB;
 
@@ -66,8 +69,7 @@ CREATE TABLE bus_producer (
   factory_new_production INT NULL,
   production_per_year INT NULL,
   PRIMARY KEY (idbus_producer),
-  CONSTRAINT ak_owner_name
-  UNIQUE (owner_name)
+  UNIQUE INDEX owner_name_UNIQUE (owner_name ASC) VISIBLE
 ) ENGINE = InnoDB;
 
 CREATE TABLE bus (
