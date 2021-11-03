@@ -2,7 +2,6 @@ package ua.lviv.iot.model.entity;
 
 import lombok.*;
 import ua.lviv.iot.model.annotations.NotInputable;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
