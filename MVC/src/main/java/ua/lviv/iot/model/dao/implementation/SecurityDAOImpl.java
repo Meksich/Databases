@@ -1,10 +1,10 @@
 package ua.lviv.iot.model.dao.implementation;
 
-import ua.lviv.iot.model.dao.impl.MedicalCardDaoImpl;
-import ua.lviv.iot.model.entity.patient.MedicalCard;
+import ua.lviv.iot.model.dao.AbstractDAOImpl;
+import ua.lviv.iot.model.entity.Security;
 
-public class SecurityDAOImpl extends AbstractControllerImpl<MedicalCard, Integer> {
+public class SecurityDAOImpl extends AbstractDAOImpl<Security, Integer> {
     public SecurityDAOImpl(){
-        super(new MedicalCardDaoImpl());
+        super(Security.class);
     }
 }

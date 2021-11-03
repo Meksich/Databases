@@ -1,11 +1,11 @@
 package ua.lviv.iot.model.dao.implementation;
 
 
-import ua.lviv.iot.model.dao.impl.CountryDaoImpl;
-import ua.lviv.iot.model.entity.drug.Country;
+import ua.lviv.iot.model.dao.AbstractDAOImpl;
+import ua.lviv.iot.model.entity.Bus;
 
-public class BusDAOImpl extends AbstractControllerImpl<Country, Integer> {
+public class BusDAOImpl extends AbstractDAOImpl<Bus, Integer> {
     public BusDAOImpl(){
-        super(new CountryDaoImpl());
+        super(Bus.class);
     }
 }

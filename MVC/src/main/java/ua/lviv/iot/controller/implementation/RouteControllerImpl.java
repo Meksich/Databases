@@ -1,10 +1,11 @@
 package ua.lviv.iot.controller.implementation;
 
-import ua.lviv.iot.model.dao.impl.HospitalDaoImpl;
-import ua.lviv.iot.model.entity.patient.Hospital;
+import ua.lviv.iot.controller.AbstractControllerImpl;
+import ua.lviv.iot.model.dao.implementation.RouteDAOImpl;
+import ua.lviv.iot.model.entity.Route;
 
-public class RouteControllerImpl extends AbstractControllerImpl<Hospital, Integer> {
+public class RouteControllerImpl extends AbstractControllerImpl<Route, Integer> {
     public RouteControllerImpl(){
-        super(new HospitalDaoImpl());
+        super(new RouteDAOImpl());
     }
 }

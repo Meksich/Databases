@@ -1,4 +1,8 @@
 package ua.lviv.iot.model.dao;
 
-public class AbstractDAOImpl {
+import ua.lviv.iot.model.dao.implementation.BusDAOImpl;
+
+public class AbstractDAOImpl<Entity, Id> implements AbstractDAO<Entity, Id>{
+    public AbstractDAOImpl(Class<Entity> entityClass){
+    }
 }

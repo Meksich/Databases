@@ -1,10 +1,11 @@
 package ua.lviv.iot.model.dao.implementation;
 
-import ua.lviv.iot.model.dao.impl.DoctorPersonalFileDaoImpl;
-import ua.lviv.iot.model.entity.patient.DoctorPersonalFile;
+import ua.lviv.iot.model.dao.AbstractDAOImpl;
+import ua.lviv.iot.model.entity.BusRented;
 
-public class BusRentedDAOImpl extends AbstractControllerImpl<DoctorPersonalFile, Integer> {
+public class BusRentedDAOImpl extends AbstractDAOImpl<BusRented, Integer> {
     public BusRentedDAOImpl(){
-        super(new DoctorPersonalFileDaoImpl());
+        super(BusRented.class);
     }
 }
+

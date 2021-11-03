@@ -1,10 +1,10 @@
 package ua.lviv.iot.model.dao.implementation;
 
-import ua.lviv.iot.model.dao.impl.DoctorAppointmentDaoImpl;
-import ua.lviv.iot.model.entity.patient.DoctorAppointment;
+import ua.lviv.iot.model.dao.AbstractDAOImpl;
+import ua.lviv.iot.model.entity.BusProducer;
 
-public class BusProducerDAOImpl extends AbstractControllerImpl<DoctorAppointment, Integer> {
+public class BusProducerDAOImpl extends AbstractDAOImpl<BusProducer, Integer> {
     public BusProducerDAOImpl(){
-        super(new DoctorAppointmentDaoImpl());
+        super(BusProducer.class);
     }
 }

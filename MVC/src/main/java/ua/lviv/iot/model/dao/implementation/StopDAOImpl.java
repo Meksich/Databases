@@ -1,10 +1,10 @@
 package ua.lviv.iot.model.dao.implementation;
 
-import ua.lviv.iot.model.dao.impl.PatientDaoImpl;
-import ua.lviv.iot.model.entity.patient.Patient;
+import ua.lviv.iot.model.dao.AbstractDAOImpl;
+import ua.lviv.iot.model.entity.Stop;
 
-public class StopDAOImpl extends AbstractControllerImpl<Patient, Integer> {
+public class StopDAOImpl extends AbstractDAOImpl<Stop, Integer> {
     public StopDAOImpl(){
-        super(new PatientDaoImpl());
+        super(Stop.class);
     }
 }

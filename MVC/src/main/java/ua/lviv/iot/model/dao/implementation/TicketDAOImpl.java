@@ -1,10 +1,10 @@
 package ua.lviv.iot.model.dao.implementation;
 
-import ua.lviv.iot.model.dao.impl.TrackerDataDaoImpl;
-import ua.lviv.iot.model.entity.patient.TrackerData;
+import ua.lviv.iot.model.dao.AbstractDAOImpl;
+import ua.lviv.iot.model.entity.Ticket;
 
-public class TicketDAOImpl extends AbstractControllerImpl<TrackerData, Integer> {
+public class TicketDAOImpl extends AbstractDAOImpl<Ticket, Integer> {
     public TicketDAOImpl(){
-        super(new TrackerDataDaoImpl());
+        super(Ticket.class);
     }
 }
