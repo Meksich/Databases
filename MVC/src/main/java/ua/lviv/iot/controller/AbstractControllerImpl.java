@@ -6,34 +6,34 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class AbstractControllerImpl<Entity, Id> implements AbstractController<Entity, Id>{
-    private AbstractDAO<Entity, Id> dao;
+    private final AbstractDAO<Entity, Id> dao;
 
-    public AbstractControllerImpl(AbstractDAO dao){
+    public AbstractControllerImpl(AbstractDAO<Entity, Id> dao){
         this.dao = dao;
     }
 
     @Override
     public List<Entity> getAll() throws SQLException {
-        return null;
+        return dao.getAll();
     }
 
     @Override
     public Entity get(Id id) throws SQLException {
-        return null;
+        return dao.get(id);
     }
 
     @Override
     public boolean update(Id id, Entity entity) throws SQLException {
-        return true;
+        return dao.update(id, entity);
     }
 
     @Override
     public boolean delete(Id id) throws SQLException {
-        return true;
+        return dao.delete(id);
     }
 
     @Override
     public boolean create(Entity entity) throws SQLException {
-        return true;
+        return dao.create(entity);
     }
 }
