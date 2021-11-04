@@ -36,6 +36,7 @@ public class AbstractDAOImpl<Entity, Id> implements AbstractDAO<Entity, Id>{
                 tableName, primaryKeyName, id);
         try(PreparedStatement preparedStatement = connection.prepareStatement(statement)) {
             try(ResultSet resultSet = preparedStatement.executeQuery()) {
+                resultSet.next();
                 searched = transformer.castResultSetToEntity(resultSet);
             } catch (InvocationTargetException | InstantiationException |
                     IllegalAccessException | NoSuchMethodException e) {
