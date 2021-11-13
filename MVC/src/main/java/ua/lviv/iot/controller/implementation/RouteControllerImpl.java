@@ -4,7 +4,7 @@ import ua.lviv.iot.controller.AbstractControllerImpl;
 import ua.lviv.iot.model.dao.implementation.RouteDAOImpl;
 import ua.lviv.iot.model.entity.Route;
 
-public class RouteControllerImpl extends AbstractControllerImpl<Route, Integer> {
+public class RouteControllerImpl extends AbstractControllerImpl<Route> {
     public RouteControllerImpl(){
         super(new RouteDAOImpl());
     }

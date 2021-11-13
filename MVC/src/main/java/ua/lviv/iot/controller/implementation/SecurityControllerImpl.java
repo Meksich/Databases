@@ -4,7 +4,7 @@ import ua.lviv.iot.controller.AbstractControllerImpl;
 import ua.lviv.iot.model.dao.implementation.SecurityDAOImpl;
 import ua.lviv.iot.model.entity.Security;
 
-public class SecurityControllerImpl extends AbstractControllerImpl<Security, Integer> {
+public class SecurityControllerImpl extends AbstractControllerImpl<Security> {
     public SecurityControllerImpl(){
         super(new SecurityDAOImpl());
     }

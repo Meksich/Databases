@@ -1,11 +1,9 @@
 package ua.lviv.iot.model.entity;
 
 import lombok.*;
-import ua.lviv.iot.model.annotations.NotInputable;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
+import javax.persistence.*;
+import java.util.Collection;
 
 @Table(name = "route")
 @NoArgsConstructor
@@ -14,39 +12,35 @@ import javax.validation.constraints.NotNull;
 @Setter
 @EqualsAndHashCode(of = "number")
 @ToString
-
+@Entity
 public class Route {
     @Id
     @Column(name = "number")
-    @NotInputable
     private Integer number;
 
     @Column(name = "stops_number")
     private Integer stopsNumber;
 
-    @Column(name = "length")
-    @NotNull
+    @Column(name = "length", nullable = false)
     private Integer length;
 
     @Column(name = "average_two_stops_length")
     private Integer averageTwoStopsLength;
 
-    @Column(name = "whole_route_price")
-    @NotNull
+    @Column(name = "whole_route_price", nullable = false)
     private Double wholeRoutePrice;
 
     @Column(name = "two_stops_price")
     private Double twoStopsPrice;
 
-    @Column(name = "last_stop", length = 45)
-    @NotNull
-    private String lastStop;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "last_stop", referencedColumnName = "street_name", nullable = false)
+    private Stop lastStop;
 
-    @Column(name = "point_of_departure", length = 45)
-    @NotNull
-    private String pointOfDeparture;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ticket_idticket", referencedColumnName = "idticket", nullable = false)
+    private Ticket ticket;
 
-    @Column(name = "ticket_idticket")
-    @NotNull
-    private Integer ticketId;
+    @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)
+    private Collection<Bus> buses;
 }

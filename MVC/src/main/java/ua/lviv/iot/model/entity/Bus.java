@@ -1,12 +1,9 @@
 package ua.lviv.iot.model.entity;
 
 import lombok.*;
-import ua.lviv.iot.model.annotations.NotInputable;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
+@Entity
 @Table(name = "bus")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,15 +11,13 @@ import javax.validation.constraints.NotNull;
 @Setter
 @EqualsAndHashCode(of = "id")
 @ToString
-
 public class Bus{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idbus")
-    @NotInputable
     private Integer id;
 
-    @Column(name = "age")
-    @NotNull
+    @Column(name = "age", nullable = false)
     private Integer age;
 
     @Column(name = "passenger_capacity")
@@ -31,24 +26,33 @@ public class Bus{
     @Column(name = "mileage")
     private Integer mileage;
 
-    @Column(name = "number_of_wheels")
-    @NotNull
+    @Column(name = "number_of_wheels", nullable = false)
     private Integer numberOfWheels;
 
-    @Column(name = "doors_number")
-    @NotNull
+    @Column(name = "doors_number", nullable = false)
     private Integer doorsNumber;
 
     @Column(name = "seats")
     private Integer seats;
 
-    @Column(name = "route_number")
-    private Integer routeNumber;
+    @ManyToOne
+    @JoinColumn(name = "route_number", referencedColumnName = "number")
+    private Route route;
 
-    @Column(name = "bus_rented_idbus_rented")
-    private Integer busRentedId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "bus_rented_idbus_rented", referencedColumnName = "idbus_rented")
+    private BusRented busRented;
 
-    @Column(name = "bus_producer_id")
-    @NotNull
-    private Integer busProducerId;
+    @ManyToOne
+    @JoinColumn(name = "bus_producer_id", referencedColumnName = "idbus_producer", nullable = false)
+    private BusProducer busProducer;
+
+    @OneToOne(mappedBy = "bus")
+    private Driver driver;
+
+    @Override
+    public String toString(){
+        return "Bus: ";
+
+    }
 }

@@ -3,11 +3,11 @@ package ua.lviv.iot.model.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface AbstractDAO<Entity, Id> {
+public interface AbstractDAO<Entity> {
 
-    Entity get(Id id) throws SQLException;
+    Entity get(Integer id) throws SQLException;
     List<Entity> getAll() throws SQLException;
     boolean create(Entity entity) throws SQLException;
-    boolean update(Id id, Entity entity) throws SQLException;
-    boolean delete(Id id) throws SQLException;
+    boolean update(Integer id, Entity entity) throws SQLException;
+    boolean delete(Integer id) throws SQLException;
 }

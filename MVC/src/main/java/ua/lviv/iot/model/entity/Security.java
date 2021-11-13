@@ -1,11 +1,8 @@
 package ua.lviv.iot.model.entity;
 
 import lombok.*;
-import ua.lviv.iot.model.annotations.NotInputable;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+
+import javax.persistence.*;
 
 @Table(name = "security")
 @NoArgsConstructor
@@ -14,18 +11,22 @@ import javax.validation.constraints.NotNull;
 @Setter
 @EqualsAndHashCode(of = "login")
 @ToString
-
+@Entity
 public class Security{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "login", length = 45)
-    @NotInputable
     private String login;
 
-    @Column(name = "password", length = 45)
-    @NotNull
+    @Column(name = "password", length = 45, nullable = false)
     private String password;
 
-    @Column(name = "driver_id")
-    @NotNull
-    private Integer driverId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
+    private Driver driver;
+
+    public Security(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 }
