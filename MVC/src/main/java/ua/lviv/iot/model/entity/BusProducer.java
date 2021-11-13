@@ -16,7 +16,7 @@ import java.util.Collection;
 public class BusProducer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idbus_producer")
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "producer_country", length = 45, nullable = false)
@@ -34,4 +34,14 @@ public class BusProducer {
     @OneToMany(mappedBy = "busProducer", fetch = FetchType.LAZY)
     private Collection<Bus> buses;
 
+    @Override
+    public String toString() {
+        return "Bus: "
+                + "\nid = " + id
+                + "\nproducer country = " + producerCountry
+                + "\nowner name  = " + ownerName
+                + "\nfactory new production = " + factoryNewProduction
+                + "\nproduction per year = " + productionPerYear
+                + "\n";
+    }
 }

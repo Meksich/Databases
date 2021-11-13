@@ -16,7 +16,7 @@ public class BusRented{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idbus_rented")
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "owner", length = 45, nullable = false)

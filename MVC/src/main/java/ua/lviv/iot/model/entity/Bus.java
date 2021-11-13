@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Bus{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idbus")
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "age", nullable = false)
@@ -36,15 +36,15 @@ public class Bus{
     private Integer seats;
 
     @ManyToOne
-    @JoinColumn(name = "route_number", referencedColumnName = "number")
+    @JoinColumn(name = "route_number", referencedColumnName = "id")
     private Route route;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bus_rented_idbus_rented", referencedColumnName = "idbus_rented")
+    @OneToOne
+    @JoinColumn(name = "bus_rented_id", referencedColumnName = "id")
     private BusRented busRented;
 
     @ManyToOne
-    @JoinColumn(name = "bus_producer_id", referencedColumnName = "idbus_producer", nullable = false)
+    @JoinColumn(name = "bus_producer_id", referencedColumnName = "id", nullable = false)
     private BusProducer busProducer;
 
     @OneToOne(mappedBy = "bus")
@@ -52,7 +52,15 @@ public class Bus{
 
     @Override
     public String toString(){
-        return "Bus: ";
+        return "Bus: "
+                + "\nid = " + id
+                + "\nage = " + age
+                + "\npassenger capacity  = " + passengerCapacity
+                + "\nmileage = " + mileage
+                + "\nnumber of wheels = " + numberOfWheels
+                + "\ndoors number = " + doorsNumber
+                + "\nroute = " + route
+                + "\n";
 
     }
 }

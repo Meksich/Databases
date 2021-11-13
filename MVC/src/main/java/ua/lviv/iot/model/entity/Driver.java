@@ -34,10 +34,24 @@ public class Driver {
     @Column(name = "is_ready_to_die_for_company", nullable = false)
     private Integer isReadyToDieForCompany;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bus_idbus", referencedColumnName = "idbus")
+    @OneToOne
+    @JoinColumn(name = "bus_id", referencedColumnName = "id")
     private Bus bus;
 
     @OneToOne(mappedBy = "driver")
     private Security security;
+
+    @Override
+    public String toString(){
+        return "Driver: "
+                + "\nid = " + id
+                + "\nname = " + name
+                + "\nsurname  = " + surname
+                + "\ndriver licence category = " + driverLicenceCategory
+                + "\nsallary = " + sallaryInBucks
+                + "\nisReadyToDieForCompany? = " + isReadyToDieForCompany
+                + "\nbus id = " + bus
+                + "\n";
+
+    }
 }

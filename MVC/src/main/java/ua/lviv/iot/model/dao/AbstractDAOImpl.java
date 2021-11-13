@@ -23,7 +23,9 @@ public class AbstractDAOImpl<Entity> implements AbstractDAO<Entity>{
     public Entity get(Integer id) throws SQLException{
         Entity searched = null;
         try(Session session = sessionFactory.getCurrentSession()) {
-            searched = session.get(entityClass, (Serializable) id);
+            Transaction transaction = session.beginTransaction();
+            searched = session.get(entityClass, id);
+            transaction.commit();
         } catch (Exception e) {
             System.out.println("Error getting row! " + e);
             e.printStackTrace();

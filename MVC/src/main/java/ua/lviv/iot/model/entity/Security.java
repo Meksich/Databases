@@ -9,24 +9,24 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "login")
+@EqualsAndHashCode(of = "id")
 @ToString
 @Entity
 public class Security{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "login", length = 45)
-    private String login;
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "password", length = 45, nullable = false)
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "driver_id", referencedColumnName = "id", nullable = false)
     private Driver driver;
 
-    public Security(String login, String password) {
-        this.login = login;
+    public Security(Integer id, String password) {
+        this.id = id;
         this.password = password;
     }
 }

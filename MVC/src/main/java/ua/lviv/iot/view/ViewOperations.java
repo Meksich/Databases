@@ -55,6 +55,11 @@ public class ViewOperations<Entity> {
                 field.setAccessible(true);
                 input(field, entityUpdate);
             }
+            Field idField = Arrays.stream(entity.getDeclaredFields()).filter(field -> {
+                return field.isAnnotationPresent(Id.class);
+            }).collect(Collectors.toList()).get(0);
+            idField.setAccessible(true);
+            idField.set(entityUpdate, id);
             if(controller.update(id, entityUpdate))
                 System.out.println("Row with id \"" + id + "\" have been successfully updated");
 

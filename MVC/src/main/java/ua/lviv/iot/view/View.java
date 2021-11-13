@@ -72,7 +72,7 @@ public class View {
             System.out.println("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-\n");
             boolean shallWeContinue = true;
             while (shallWeContinue) {
-                System.out.println("Choose your next action with" + entity.getSimpleName() + "table:");
+                System.out.println("Choose your next action with " + entity.getSimpleName() + " table:");
                 System.out.println("1: Create new row");
                 System.out.println("2: Update row");
                 System.out.println("3: Delete row");

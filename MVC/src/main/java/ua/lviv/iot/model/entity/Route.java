@@ -10,13 +10,14 @@ import java.util.Collection;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "number")
+@EqualsAndHashCode(of = "id")
 @ToString
 @Entity
 public class Route {
     @Id
-    @Column(name = "number")
-    private Integer number;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
     @Column(name = "stops_number")
     private Integer stopsNumber;
@@ -33,12 +34,8 @@ public class Route {
     @Column(name = "two_stops_price")
     private Double twoStopsPrice;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "last_stop", referencedColumnName = "street_name", nullable = false)
-    private Stop lastStop;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ticket_idticket", referencedColumnName = "idticket", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "ticket_id", referencedColumnName = "id", nullable = false)
     private Ticket ticket;
 
     @OneToMany(mappedBy = "route", fetch = FetchType.LAZY)

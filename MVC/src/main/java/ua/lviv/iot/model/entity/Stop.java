@@ -9,11 +9,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "streetName")
+@EqualsAndHashCode(of = "id")
 @ToString
 @Entity
 public class Stop{
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "street_name", length = 60)
     private String streetName;
 
@@ -25,10 +29,4 @@ public class Stop{
 
     @Column(name = "is_final_stop", nullable = false)
     private Integer isFinalStop;
-
-    @OneToOne(mappedBy = "lastStop")
-    private Route routeLast;
-
-    @Column(name = "point_of_departure", length = 45, nullable = false)
-    private String pointOfDeparture;
 }
