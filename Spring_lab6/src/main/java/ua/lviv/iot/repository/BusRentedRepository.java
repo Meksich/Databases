@@ -1,4 +1,10 @@
 package ua.lviv.iot.repository;
 
-public class BusRentedRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import ua.lviv.iot.domain.BusRented;
+
+@Repository
+public interface BusRentedRepository extends JpaRepository<BusRented, Integer>{
+
 }
