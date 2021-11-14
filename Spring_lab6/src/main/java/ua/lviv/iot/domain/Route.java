@@ -11,7 +11,6 @@ import java.util.Collection;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-@ToString
 @Entity
 public class Route {
     @Id
