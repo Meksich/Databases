@@ -32,7 +32,7 @@ public class Driver {
     private Integer sallaryInBucks;
 
     @Column(name = "is_ready_to_die_for_company", nullable = false)
-    private Integer isReadyToDieForCompany;
+    private Boolean isReadyToDieForCompany;
 
     @OneToOne
     @JoinColumn(name = "bus_id", referencedColumnName = "id")

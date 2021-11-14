@@ -37,7 +37,8 @@ public class BusRented{
                 + "\nid = " + id
                 + "\nowner = " + owner
                 + "\nrental fee = " + rentalFee
-                + "\nowner country = " + ownerCountry;
+                + "\nowner country = " + ownerCountry
+                + "\n";
 
     }
 }

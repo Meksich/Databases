@@ -28,5 +28,5 @@ public class Stop{
     private Integer averageNumberOfPassengers;
 
     @Column(name = "is_final_stop", nullable = false)
-    private Integer isFinalStop;
+    private Boolean isFinalStop;
 }

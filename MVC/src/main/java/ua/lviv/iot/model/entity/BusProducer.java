@@ -36,7 +36,7 @@ public class BusProducer {
 
     @Override
     public String toString() {
-        return "Bus: "
+        return "Bus producer: "
                 + "\nid = " + id
                 + "\nproducer country = " + producerCountry
                 + "\nowner name  = " + ownerName
