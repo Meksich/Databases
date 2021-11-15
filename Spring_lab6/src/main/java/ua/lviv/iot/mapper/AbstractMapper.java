@@ -1,4 +1,5 @@
 package ua.lviv.iot.mapper;
 
-public interface AbstractMapper {
+public interface AbstractMapper<Entity, DTO> {
+    DTO map(Entity entity);
 }
