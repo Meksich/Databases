@@ -11,7 +11,7 @@ import ua.lviv.iot.mapper.implementation.TicketMapper;
 import ua.lviv.iot.service.AbstractService;
 import ua.lviv.iot.service.implementation.TicketService;
 
-@RequestMapping(value = "/stop")
+@RequestMapping(value = "/ticket")
 @RestController
 @AllArgsConstructor
 public class TicketControllerImpl extends AbstractControllerImpl<Ticket, TicketDTO> {

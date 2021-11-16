@@ -1,15 +1,15 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/autobus?createDatabaseIfNotExist=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/autobus?allowPublicKeyRetrieval=true&useSSL=false
     username: root
-    password: 01012015
+    password: '01012015'
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
 
 server:
-  port: 8080
+  port: 8081
 
