@@ -20,13 +20,13 @@ end//
 
 CREATE procedure `select_disciplines_has_empoyees`(
 in discipline_id int,
-in empoyee_id int
+in employees_id int
 )
 begin
-	SELECT empoyees.surname, discipline.name from discipline_has_employee 
-		inner join discipline on discipline_has_employee.discipline_id = discipline.id
-        inner join empoyees on discipline_has_employee.empolyee_id = empoyees.id
-	where (discipline_id = '' or discipline_id = discipline.id)and(empoyee_id = '' or empoyee_id = empoyees.id);
+	SELECT employees.surname, discipline.title from discipline_has_employees
+		inner join discipline on discipline_has_employees.discipline_id = discipline.id
+        inner join employees on discipline_has_employees.employees_id = employees.id
+	where (discipline_id = 0 or discipline_id = discipline.id)and(employees_id = 0 or employees_id = employees.id);
 end//
 
 CREATE procedure `shuffle_discipline`()
@@ -42,8 +42,10 @@ declare form_of_reception char(1);
 declare discipline_cursor cursor for select * from discipline;
 declare continue handler for not found set done = true;
 
-set @create_query = concat("CREATE table `discipline_", curdate(), "_", curtime(), "_first` (",
-								"id int,",
+set @cur_datetime = current_timestamp();
+
+set @create_query = concat("CREATE table `discipline_", @cur_datetime, "_first` (",
+								"id int auto_increment,",
 								"title varchar(45) not null,",
 								"semester int,",
 								"code int,",
@@ -54,8 +56,8 @@ prepare create_statement from @create_query;
 execute create_statement;
 deallocate prepare create_statement;
 
-set @create_query = concat("CREATE table `discipline_", curdate(), "_", curtime(), "_second` (",
-								"id int,",
+set @create_query = concat("CREATE table `discipline_", @cur_datetime, "_second` (",
+								"id int auto_increment,",
 								"title varchar(45) not null,",
 								"semester int,",
 								"code int,",
@@ -73,11 +75,11 @@ discipline_loop: loop
 		LEAVE discipline_loop;
 	END IF;
 	if rand()>0.5 then
-		SET @temp_query=CONCAT("INSERT into `discipline_", curdate(), "_", curtime(), "_first` (id, title, semester, code, form_of_reception) values(`",
-								id, "`,`", title, "`,`", semester, "`,`", code, "`,`", form_of_reception, "`);");
+		SET @temp_query=CONCAT("INSERT into `discipline_", @cur_datetime, "_first` (title, semester, code, form_of_reception) values(",
+								"'", title, "',", semester, ",", code, ",'", form_of_reception, "');");
 	else
-		SET @temp_query=CONCAT("INSERT into `discipline_", curdate(), "_", curtime(), "_second` (id, title, semester, code, form_of_reception) values(`",
-								id, "`,`", title, "`,`", semester, "`,`", code, "`,`", form_of_reception, "`);");
+		SET @temp_query=CONCAT("INSERT into `discipline_", @cur_datetime, "_second` (title, semester, code, form_of_reception) values(",
+								"'", title, "',", semester, ",", code, ",'", form_of_reception, "');");
 	end if;
 	PREPARE temp_statement FROM @temp_query;
 	EXECUTE temp_statement;

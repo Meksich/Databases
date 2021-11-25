@@ -3,11 +3,11 @@ USE lab_7;
 
 DROP table if exists employees;
 DROP table if exists discipline;
-DROP table if exists position;
+DROP table if exists positions;
 DROP table if exists academic_status;
 DROP table if exists degree;
 DROP table if exists form_of_reception;
-DROP table if exists discipline_has_empoyees;
+DROP table if exists discipline_has_employees;
 
 CREATE table employees (
 	id int auto_increment,
@@ -17,7 +17,7 @@ CREATE table employees (
     seniority double,
     date_of_birth date,
     passport_series_number varchar(45) not null,
-    position_id int not null,
+    positions_id int not null,
     academic_status_id int not null,
     degree_id int not null,
     constraint pk_empolyees primary key(id)
@@ -32,10 +32,10 @@ CREATE table discipline (
     constraint pk_discipline primary key(id)
 );
 
-CREATE table position (
+CREATE table positions (
 	id int auto_increment,
     title varchar(45) not null,
-    constraint pk_position primary key(id)
+    constraint pk_positions primary key(id)
 );
 
 CREATE table academic_status (
@@ -56,10 +56,10 @@ CREATE table form_of_reception (
     constraint pk_form_of_reception primary key(title)
 );
 
-CREATE table discipline_has_empoyees (
+CREATE table discipline_has_employees (
 	discipline_id int,
     employees_id int,
-    constraint pk_discipline_has_empoyees primary key(discipline_id, employees_id)
+    constraint pk_discipline_has_employees primary key(discipline_id, employees_id)
 );
 
 INSERT into form_of_reception(title, full_title) values
